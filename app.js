@@ -1,0 +1,72 @@
+//get mocies
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'c43fa4b6aamshd9361be1e5bc9a7p1e6720jsn0efb0b95dd1f',
+		'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
+	}
+};
+
+const reviews = [];
+
+const movieSearchURL = 'https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=';
+
+let movieQuery = document.getElementById('movieTitle');
+
+const movieButton = document.getElementById('search');
+let movieSearchImage = document.getElementById('moveImg');
+let movieSearchTitle = document.getElementById('heading');
+let movieDescription = document.getElementById('movDesc');
+const movieContainer = document.getElementById('results');
+const reviewContainer = document.getElementById('review');
+const reviewButton = document.getElementById('sendReview');
+let reviewScore = document.getElementById('reviewScore');
+const reviewBlock = document.getElementsByClassName('reviewBlock')
+
+// const review = function (movTitle, movReview){
+//     this.movTitle = movTitle;
+//     this.movReview = movReview;
+// }
+
+
+async function searchMovie(name){
+    try{
+    const response = await fetch(movieSearchURL + name, options);
+    const data = await response.json();
+    console.log(data);
+    displayMovie(data.results[0].picture, data.results[0].name, data.results[0].external_ids.imdb.url);
+    reviewButton.onclick = function() {
+        addReview(data.results[0].name, reviewScore.value);
+        reviewScore.value = '';
+        reviewContainer.classList.remove('hidden');
+        movieContainer.classList.add('hidden');
+    } }catch(error){
+        alert(error)
+    }
+}
+
+movieButton.onclick = function (){
+    searchMovie(movieQuery.value);
+    movieQuery.value = " ";
+ }
+
+ function displayMovie(img, title, description){
+    movieContainer.classList.remove('hidden');
+    movieSearchImage.src = img;
+    movieSearchTitle.innerText = title;
+    movieDescription.href = description;
+ }
+
+ function addReview(title, review){
+    const movieTitle = document.createElement('h4');
+    const reviewAdd = document.createElement('p');
+    movieTitle.innerText = title;
+    reviewAdd.innerText = ('I gave this film a ' + review)
+    reviewContainer.appendChild(movieTitle);
+    movieTitle.appendChild(reviewAdd);
+    // let newReview = new review (title, review);
+    // reviews.push(newReview);
+ }
+
+
+

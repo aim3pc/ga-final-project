@@ -1,0 +1,17 @@
+.results{
+    justify-content: center;
+    text-align: center;
+}
+
+header{
+    text-align: center;
+    font-weight: bold;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+body{
+    background-color: lightcoral;
+}
