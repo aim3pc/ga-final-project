@@ -20,5 +20,10 @@ header{
 }
 
 .card{
-    background-color: beige;
+    background-color: lightpink;
+}
+
+img{
+    max-height: 300px;
+    width: auto;
 }

@@ -55,6 +55,8 @@ movieButton.onclick = function (){
     const singleReview = document.createElement('div');
     singleReview.classList.add('card');
     singleReview.style.width = '18rem';
+    singleReview.style.marginLeft ='10px';
+    singleReview.style.marginTop = '10px';
 
     const singleRevBody = document.createElement('div');
     singleRevBody.classList.add('card-body');
@@ -65,7 +67,7 @@ movieButton.onclick = function (){
 
     const reviewAdd = document.createElement('p');
     reviewAdd.classList.add('card-text');
-    reviewAdd.innerText = ('I gave this film a ' + review)
+    reviewAdd.innerText = ('Review: ' + review);
 
     const imdbLink = document.createElement('a');
     imdbLink.href = url;
