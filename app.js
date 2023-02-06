@@ -23,12 +23,6 @@ const reviewButton = document.getElementById('sendReview');
 let reviewScore = document.getElementById('reviewScore');
 const reviewBlock = document.getElementsByClassName('reviewBlock')
 
-// const review = function (movTitle, movReview){
-//     this.movTitle = movTitle;
-//     this.movReview = movReview;
-// }
-
-
 async function searchMovie(name){
     try{
     const response = await fetch(movieSearchURL + name, options);
@@ -36,7 +30,7 @@ async function searchMovie(name){
     console.log(data);
     displayMovie(data.results[0].picture, data.results[0].name, data.results[0].external_ids.imdb.url);
     reviewButton.onclick = function() {
-        addReview(data.results[0].name, reviewScore.value);
+        addReview(data.results[0].name, reviewScore.value, data.results[0].external_ids.imdb.url);
         reviewScore.value = '';
         reviewContainer.classList.remove('hidden');
         movieContainer.classList.add('hidden');
@@ -57,16 +51,37 @@ movieButton.onclick = function (){
     movieDescription.href = description;
  }
 
- function addReview(title, review){
-    const movieTitle = document.createElement('h4');
-    const reviewAdd = document.createElement('p');
+ function addReview(title, review, url){
+    const singleReview = document.createElement('div');
+    singleReview.classList.add('card');
+    singleReview.style.width = '18rem';
+
+    const singleRevBody = document.createElement('div');
+    singleRevBody.classList.add('card-body');
+
+    const movieTitle = document.createElement('h5');
+    movieTitle.classList.add('card-title');
     movieTitle.innerText = title;
+
+    const reviewAdd = document.createElement('p');
+    reviewAdd.classList.add('card-text');
     reviewAdd.innerText = ('I gave this film a ' + review)
-    reviewContainer.appendChild(movieTitle);
-    movieTitle.appendChild(reviewAdd);
-    // let newReview = new review (title, review);
-    // reviews.push(newReview);
+
+    const imdbLink = document.createElement('a');
+    imdbLink.href = url;
+    imdbLink.innerText = 'Click to view IMDB';
+    imdbLink.target = "_blank";
+    imdbLink.classList.add('btn', 'btn-primary');
+    
+    
+
+    reviewContainer.appendChild(singleReview);
+    singleReview.appendChild(singleRevBody);
+    singleRevBody.appendChild(movieTitle);
+    singleRevBody.appendChild(reviewAdd)
+    singleRevBody.appendChild(imdbLink);
  }
+
 
 
 
