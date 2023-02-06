@@ -12,13 +12,11 @@ header{
     visibility: hidden;
 }
 
-body{
-    background-color: lightgreen
-}
 .find{
     text-decoration:bolder;
-    background-color:salmon;
+    background-color:gold;
     text-decoration-color: black;
+    
 }
 
 .card{
