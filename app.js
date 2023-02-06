@@ -7,8 +7,6 @@ const options = {
 	}
 };
 
-const reviews = [];
-
 const movieSearchURL = 'https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=';
 
 let movieQuery = document.getElementById('movieTitle');
@@ -21,7 +19,6 @@ const movieContainer = document.getElementById('results');
 const reviewContainer = document.getElementById('review');
 const reviewButton = document.getElementById('sendReview');
 let reviewScore = document.getElementById('reviewScore');
-const reviewBlock = document.getElementsByClassName('reviewBlock')
 
 async function searchMovie(name){
     try{
