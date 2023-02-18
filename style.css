@@ -1,6 +1,20 @@
 .results{
     justify-content: center;
     text-align: center;
+    border-style: double;
+    border-radius: 3rem;
+    padding-block: 3rem;
+    background-color: lightblue;
+}
+.navbar{
+    background-color: aquamarine;
+    border-bottom: solid;
+    border-color: blueviolet;
+}
+.btn{
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
 }
 
 header{
@@ -16,7 +30,7 @@ header{
     text-decoration:bolder;
     background-color:gold;
     text-decoration-color: black;
-    
+    margin-left: .5rem;
 }
 
 .card{
@@ -26,4 +40,14 @@ header{
 img{
     max-height: 300px;
     width: auto;
+    border-style: outset;
 }
+.card-title{
+    text-align: center;
+}
+
+.body{
+    margin-top: 6rem;
+    justify-content: center;
+}
+
